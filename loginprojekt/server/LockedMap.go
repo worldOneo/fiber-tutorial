@@ -1,4 +1,4 @@
-package util
+package main
 
 import "sync"
 
@@ -7,16 +7,10 @@ type LockedMap struct {
 	Map map[string]string
 }
 
-func New() LockedMap {
+func NewLockedMap() LockedMap {
 	return LockedMap{
 		Map: make(map[string]string),
 	}
-}
-
-func (L *LockedMap) Put(key, val string) {
-	L.l.Lock()
-	defer L.l.Unlock()
-	L.Map[key] = val
 }
 
 func (L *LockedMap) Get(key string) (val string, ok bool) {
@@ -24,6 +18,12 @@ func (L *LockedMap) Get(key string) (val string, ok bool) {
 	defer L.l.RUnlock()
 	val, ok = L.Map[key]
 	return
+}
+
+func (L *LockedMap) Put(key, val string) {
+	L.l.Lock()
+	defer L.l.Unlock()
+	L.Map[key] = val
 }
 
 func (L *LockedMap) Delete(key string) {

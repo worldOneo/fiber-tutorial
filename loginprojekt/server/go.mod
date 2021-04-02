@@ -1,8 +1,5 @@
-module github.com/worldOneo/fiber-tutorial/loginprojekt
+module github.com/worldOneo/fiber-tutorial/loginprojekt/server
 
 go 1.16
 
-require (
-	github.com/dgrijalva/jwt-go v3.2.0+incompatible // indirect
-	github.com/gofiber/fiber/v2 v2.7.1 // indirect
-)
+require github.com/gofiber/fiber/v2 v2.7.1 // indirect
